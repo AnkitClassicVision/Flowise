@@ -6,7 +6,7 @@ on:
 jobs:
     doNotAutoSyncSingleCommit:
         if: github.event.commits[1] != null
-        runs-on: ubuntu-latest
+        runs-on: blacksmith-4vcpu-ubuntu-2404
         steps:
             - uses: actions/checkout@v3
             - name: IGNORE autoSyncSingleCommit
@@ -14,7 +14,7 @@ jobs:
                   echo This single commit has came from a merged commit. We will ignore it. This case is handled in autoSyncMergedPullRequest workflow for merge commits comming from merged pull requests only! Beware, the regular merge commits are not handled by any workflow for the moment.
     autoSyncSingleCommit:
         if: github.event.commits[1] == null
-        runs-on: ubuntu-latest
+        runs-on: blacksmith-4vcpu-ubuntu-2404
         steps:
             - uses: actions/checkout@v3
             - name: autoSyncSingleCommit
